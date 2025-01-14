@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizaria!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script defer src="../js/app.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        section {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="what_makes_us_unique" class="py-5">
+        <div class="container">
+            <h2 id="final-score" class="h1000 text-center pb-5 MostSellingH1 question">
+                Your Scored:
+            </h2>
+            <h2 id="win-or-lose" class="h1000 text-center pb-5 MostSellingH1 question">
+                You Lost/Win!
+            </h2>
+            <h2 id="points" class="h1000 text-center pb-5 MostSellingH1 question">
+                You Lost/Win!
+            </h2>
+            <div class="d-flex justify-content-center">
+                <a href="../index.html">
+                    <button class="btn bn632-hover bn25c">
+                        Home
+                    </button>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const finalScoreEl = document.querySelector("#final-score");
+        const winLoseEl = document.querySelector("#win-or-lose");
+        const pointsEl = document.querySelector("#points");
+
+
+        const playerScore = localStorage.getItem('quiz_score');
+        const diffculty = localStorage.getItem('diff');
+        const correctCount = localStorage.getItem('correctCount');
+
+
+
+        finalScoreEl.textContent = `You Got ${correctCount}/10`
+
+
+        if (diffculty === "easy" && (playerScore < 5)) {
+
+            winLoseEl.textContent = 'You lost!'
+
+        } else if (diffculty === "easy" && (playerScore >= 5)) {
+
+            winLoseEl.textContent = 'You Won! Congrats!'
+
+        } else if (diffculty === "medium" && (playerScore < 15)) {
+
+            winLoseEl.textContent = 'You Lost!'
+
+        } else if (diffculty === "medium" && (playerScore >= 15)) {
+
+            winLoseEl.textContent = 'You Won! Congrats!'
+
+        } else if (diffculty === "hard" && (playerScore < 25)) {
+
+            winLoseEl.textContent = 'You Lost!'
+
+        } else if (diffculty === "hard" && (playerScore >= 25)) {
+
+            winLoseEl.textContent = 'You Won! Congrats!'
+
+        }
+
+
+        pointsEl.textContent = `Points: ${playerScore}`
+
+
+    </script>
+</body>
+
+</html>
